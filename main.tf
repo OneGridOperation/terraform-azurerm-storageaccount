@@ -1,5 +1,6 @@
 locals {
-  name     = var.override_name == null ? "${lower(replace(var.system_name, "-", ""))}${var.environment}st" : var.override_name
+  # Add 'o' to prevent name conflict with Tensio's EnergiMidt tenant. Storage account names must be globally unique.
+  name     = var.override_name == null ? "${lower(replace(var.system_name, "-", ""))}o${var.environment}st" : var.override_name
   location = var.override_location == null ? var.resource_group.location : var.override_location
 }
 
